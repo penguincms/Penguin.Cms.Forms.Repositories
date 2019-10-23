@@ -2,13 +2,14 @@
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/penguincms/Penguin.Cms.Forms.Repositories</PackageProjectUrl>
+    <Version>1.0.0</Version>
+    <Description>Not Available</Description>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Penguin.Cms.Forms" Version="1.0.0" />
     <PackageReference Include="Penguin.Cms.Repositories" Version="3.0.3" />
     <PackageReference Include="Penguin.Reflection" Version="4.0.8" />
     <PackageReference Include="Penguin.Security.Abstractions" Version="2.0.0" />
   </ItemGroup>
-
 </Project>
