@@ -17,12 +17,12 @@ namespace Penguin.Cms.Forms.Repositories
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
     public class FormRepository : AuditableEntityRepository<JsonForm>
     {
-        protected ISecurityProvider<Form> SecurityProvider { get; set; }
         private const string FORM_NAME_COLLISION_MESSAGE = "Can not save form with name that matches display name of form class";
+        protected ISecurityProvider<Form> SecurityProvider { get; set; }
 
         public FormRepository(IPersistenceContext<JsonForm> dbContext, ISecurityProvider<Form> securityProvider = null, MessageBus messageBus = null) : base(dbContext, messageBus)
         {
-            SecurityProvider = securityProvider;
+            this.SecurityProvider = securityProvider;
         }
 
         public override void AcceptMessage(Updating<JsonForm> update)
@@ -42,7 +42,10 @@ namespace Penguin.Cms.Forms.Repositories
             base.AcceptMessage(update);
         }
 
-        public override JsonForm Find(int Id) => SecurityProvider.TryFind(base.Find(Id));
+        public override JsonForm Find(int Id)
+        {
+            return this.SecurityProvider.TryFind(base.Find(Id));
+        }
 
         public Form GetByName(string Name)
         {
@@ -55,13 +58,13 @@ namespace Penguin.Cms.Forms.Repositories
 
             if (ConcreteForm is null)
             {
-                return this.Where(j => j.ExternalId == Name).ToList().Where(f => SecurityProvider.TryCheckAccess(f)).SingleOrDefault();
+                return this.Where(j => j.ExternalId == Name).ToList().Where(f => this.SecurityProvider.TryCheckAccess(f)).SingleOrDefault();
             }
             else
             {
                 if (Activator.CreateInstance(ConcreteForm) is Form toReturn)
                 {
-                    if (SecurityProvider.TryCheckAccess(toReturn))
+                    if (this.SecurityProvider.TryCheckAccess(toReturn))
                     {
                         return toReturn;
                     }
