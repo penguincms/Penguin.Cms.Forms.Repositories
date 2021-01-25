@@ -10,7 +10,6 @@ using System.Linq;
 
 namespace Penguin.Cms.Forms.Repositories
 {
-    [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
     public class FormSubmissionRepository : EntityRepository<SubmittedForm>
     {
         protected ISecurityProvider<SubmittedForm> SecurityProvider { get; set; }

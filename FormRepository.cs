@@ -13,8 +13,6 @@ using System.Reflection;
 
 namespace Penguin.Cms.Forms.Repositories
 {
-    [SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters")]
-    [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
     public class FormRepository : AuditableEntityRepository<JsonForm>
     {
         private const string FORM_NAME_COLLISION_MESSAGE = "Can not save form with name that matches display name of form class";
@@ -80,7 +78,6 @@ namespace Penguin.Cms.Forms.Repositories
             }
         }
 
-        [SuppressMessage("Globalization", "CA1307:Specify StringComparison")]
         private static Type GetConcreteFormType(string Name)
         {
             if (Name is null)
