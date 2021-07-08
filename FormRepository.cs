@@ -7,7 +7,6 @@ using Penguin.Reflection;
 using Penguin.Security.Abstractions.Extensions;
 using Penguin.Security.Abstractions.Interfaces;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 

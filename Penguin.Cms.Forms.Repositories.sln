@@ -1,25 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Penguin.Cms.Forms.Repositories", "Penguin.Cms.Forms.Repositories.csproj", "{4CEB4D54-8E50-4D3E-B401-3B45DE8CC7A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Penguin.Cms.Forms.Repositories", "Penguin.Cms.Forms.Repositories.csproj", "{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4CEB4D54-8E50-4D3E-B401-3B45DE8CC7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CEB4D54-8E50-4D3E-B401-3B45DE8CC7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CEB4D54-8E50-4D3E-B401-3B45DE8CC7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CEB4D54-8E50-4D3E-B401-3B45DE8CC7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {86F1555D-9A9D-495D-9F49-2D00DEB8BF8C}
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Debug|x64.Build.0 = Debug|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Debug|x86.Build.0 = Debug|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Release|x64.ActiveCfg = Release|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Release|x64.Build.0 = Release|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{6FB4A654-B43A-4D21-912E-3BC2CD4427B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
