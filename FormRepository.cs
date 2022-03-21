@@ -39,10 +39,7 @@ namespace Penguin.Cms.Forms.Repositories
             base.AcceptMessage(update);
         }
 
-        public override JsonForm Find(int Id)
-        {
-            return this.SecurityProvider.TryFind(base.Find(Id));
-        }
+        public override JsonForm Find(int Id) => this.SecurityProvider.TryFind(base.Find(Id));
 
         public Form GetByName(string Name)
         {
