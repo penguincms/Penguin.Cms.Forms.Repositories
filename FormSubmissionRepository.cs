@@ -18,6 +18,9 @@ namespace Penguin.Cms.Forms.Repositories
             this.SecurityProvider = securityProvider;
         }
 
-        public List<SubmittedForm> GetByOwner(Guid owner) => this.Where(j => j.Owner == owner).ToList().Where(f => this.SecurityProvider.TryCheckAccess(f)).ToList();
+        public List<SubmittedForm> GetByOwner(Guid owner)
+        {
+            return this.Where(j => j.Owner == owner).ToList().Where(f => this.SecurityProvider.TryCheckAccess(f)).ToList();
+        }
     }
 }
