@@ -15,6 +15,7 @@ namespace Penguin.Cms.Forms.Repositories
     public class FormRepository : AuditableEntityRepository<JsonForm>
     {
         private const string FORM_NAME_COLLISION_MESSAGE = "Can not save form with name that matches display name of form class";
+
         protected ISecurityProvider<Form> SecurityProvider { get; set; }
 
         public FormRepository(IPersistenceContext<JsonForm> dbContext, ISecurityProvider<Form> securityProvider = null, MessageBus messageBus = null) : base(dbContext, messageBus)
