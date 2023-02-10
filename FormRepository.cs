@@ -19,29 +19,29 @@ namespace Penguin.Cms.Forms.Repositories
 
         public FormRepository(IPersistenceContext<JsonForm> dbContext, ISecurityProvider<Form> securityProvider = null, MessageBus messageBus = null) : base(dbContext, messageBus)
         {
-            this.SecurityProvider = securityProvider;
+            SecurityProvider = securityProvider;
         }
 
-        public override void AcceptMessage(Updating<JsonForm> update)
+        public override void AcceptMessage(Updating<JsonForm> updateMessage)
         {
-            if (update is null)
+            if (updateMessage is null)
             {
-                throw new ArgumentNullException(nameof(update));
+                throw new ArgumentNullException(nameof(updateMessage));
             }
 
-            Type ConcreteForm = GetConcreteFormType(update.Target.Name);
+            Type ConcreteForm = GetConcreteFormType(updateMessage.Target.Name);
 
             if (ConcreteForm != null)
             {
                 throw new Exception(FORM_NAME_COLLISION_MESSAGE);
             }
 
-            base.AcceptMessage(update);
+            base.AcceptMessage(updateMessage);
         }
 
         public override JsonForm Find(int Id)
         {
-            return this.SecurityProvider.TryFind(base.Find(Id));
+            return SecurityProvider.TryFind(base.Find(Id));
         }
 
         public Form GetByName(string Name)
@@ -55,25 +55,13 @@ namespace Penguin.Cms.Forms.Repositories
 
             if (ConcreteForm is null)
             {
-                return this.Where(j => j.ExternalId == Name).ToList().Where(f => this.SecurityProvider.TryCheckAccess(f)).SingleOrDefault();
+                return this.Where(j => j.ExternalId == Name).ToList().Where(f => SecurityProvider.TryCheckAccess(f)).SingleOrDefault();
             }
             else
             {
-                if (Activator.CreateInstance(ConcreteForm) is Form toReturn)
-                {
-                    if (this.SecurityProvider.TryCheckAccess(toReturn))
-                    {
-                        return toReturn;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    throw new Exception("What the fuck?");
-                }
+                return Activator.CreateInstance(ConcreteForm) is Form toReturn
+                    ? SecurityProvider.TryCheckAccess(toReturn) ? toReturn : null
+                    : throw new Exception("What the fuck?");
             }
         }
 

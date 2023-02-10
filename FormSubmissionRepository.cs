@@ -15,12 +15,12 @@ namespace Penguin.Cms.Forms.Repositories
 
         public FormSubmissionRepository(IPersistenceContext<SubmittedForm> dbContext, ISecurityProvider<SubmittedForm> securityProvider = null, MessageBus messageBus = null) : base(dbContext, messageBus)
         {
-            this.SecurityProvider = securityProvider;
+            SecurityProvider = securityProvider;
         }
 
         public List<SubmittedForm> GetByOwner(Guid owner)
         {
-            return this.Where(j => j.Owner == owner).ToList().Where(f => this.SecurityProvider.TryCheckAccess(f)).ToList();
+            return this.Where(j => j.Owner == owner).ToList().Where(f => SecurityProvider.TryCheckAccess(f)).ToList();
         }
     }
 }
