@@ -1,4 +1,5 @@
-﻿using Penguin.Cms.Repositories;
+﻿using Loxifi;
+using Penguin.Cms.Repositories;
 using Penguin.Messaging.Core;
 using Penguin.Messaging.Persistence.Messages;
 using Penguin.Persistence.Abstractions.Attributes.Rendering;
@@ -15,6 +16,7 @@ namespace Penguin.Cms.Forms.Repositories
     public class FormRepository : AuditableEntityRepository<JsonForm>
     {
         private const string FORM_NAME_COLLISION_MESSAGE = "Can not save form with name that matches display name of form class";
+        private static TypeFactory TypeFactory { get; set; } = new TypeFactory(new TypeFactorySettings());
 
         protected ISecurityProvider<Form> SecurityProvider { get; set; }
 
