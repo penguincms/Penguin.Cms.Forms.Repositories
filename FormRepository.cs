@@ -16,8 +16,6 @@ namespace Penguin.Cms.Forms.Repositories
     public class FormRepository : AuditableEntityRepository<JsonForm>
     {
         private const string FORM_NAME_COLLISION_MESSAGE = "Can not save form with name that matches display name of form class";
-        private static TypeFactory TypeFactory { get; set; } = new TypeFactory(new TypeFactorySettings());
-
         protected ISecurityProvider<Form> SecurityProvider { get; set; }
 
         public FormRepository(IPersistenceContext<JsonForm> dbContext, ISecurityProvider<Form> securityProvider = null, MessageBus messageBus = null) : base(dbContext, messageBus)
@@ -76,7 +74,7 @@ namespace Penguin.Cms.Forms.Repositories
             }
 
             string ExternalId = Name.Replace("-", " ");
-            return TypeFactory.GetDerivedTypes(typeof(Form)).Where(t => (t.GetCustomAttribute<DisplayAttribute>()?.Name ?? t.Name) == ExternalId).FirstOrDefault();
+            return TypeFactory.Default.GetDerivedTypes(typeof(Form)).Where(t => (t.GetCustomAttribute<DisplayAttribute>()?.Name ?? t.Name) == ExternalId).FirstOrDefault();
         }
     }
 }
